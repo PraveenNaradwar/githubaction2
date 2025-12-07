@@ -1,0 +1,43 @@
+
+# github Etl pipeline/workflow
+
+name: github ETL pipeline
+
+on: 
+  push: 
+    branches: 
+      - main
+
+jobs:
+  extract_data_job:
+    runs_on: ubuntu-latest
+
+    steps: 
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: run extract.py
+        run: python extarct.py
+
+  transform_data_job: 
+    runs_on: ubuntu-latest
+    needs: extract_data_job
+    
+
+    steps: 
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: run transform.py
+        run: python transform.py
+
+  load_data_job: 
+    runs_on: ubuntu-latest
+    needs: transform_data_job
+
+    steps: 
+      - name: checkout code 
+        uses: actions/checkout@v2
+
+      - name: run load.py
+        run: python load.py
