@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  extract_data_job:
-    runs_on: ubuntu-latest
+  extract-data-job:
+    runs-on: ubuntu-latest
 
     steps: 
       - name: checkout code
@@ -19,9 +19,9 @@ jobs:
       - name: run extract.py
         run: python extarct.py
 
-  transform_data_job: 
-    runs_on: ubuntu-latest
-    needs: extract_data_job
+  transform-data-job: 
+    runs-on: ubuntu-latest
+    needs: extract-data-job
     
 
     steps: 
@@ -31,10 +31,9 @@ jobs:
       - name: run transform.py
         run: python transform.py
 
-  load_data_job: 
-    runs_on: ubuntu-latest
-    needs: transform_data_job
-
+  load-data-job: 
+    runs-on: ubuntu-latest
+    needs: transform-data-job
     steps: 
       - name: checkout code 
         uses: actions/checkout@v2
