@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: run extract.py
-        run: python extarct.py
+        run: python extract.py
 
   transform-data-job: 
     runs-on: ubuntu-latest
