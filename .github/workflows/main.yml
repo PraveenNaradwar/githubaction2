@@ -19,6 +19,11 @@ jobs:
       - name: show python version
         run: python --version
 
+      - name: setup python version
+        uses: actions/setup-python@v6
+        with: 
+            python-version: "3.10"
+
       - name: run extract.py
         run: python extract.py
 
